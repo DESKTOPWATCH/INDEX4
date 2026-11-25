@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander & Payer - KinStyle & Beauté</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">KinStyle<span>&Beauté</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="commande.html" class="active-link">Commander</a></li>
+            </ul>
+        </nav>
+</header>
+
+    <section class="section-padding">
+        <h2>Finaliser votre commande</h2>
+        <div class="checkout-container">
+            <form id="paymentForm" onsubmit="traiterPaiement(event)">
+                <h3>1. Informations de livraison</h3>
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" id="clientName" required placeholder="Ex: Jean Mukendi">
+                </div>
+                <div class="form-group">
+                    <label>Adresse de livraison</label>
+                    <input type="text" id="clientAddress" required placeholder="Commune, Quartier, Avenue, N°">
+                </div>
+                <div class="form-group">
+                    <label>Produit choisi</label>
+                    <select id="productSelect" onchange="calculerTotal()">
+                        <option value="25">Sérum Éclat Visage (25 $)</option>
+                        <option value="45">Ensemble Urbain Chic (45 $)</option>
+                        <option value="35">Montre Classique Cuir (35 $)</option>
+                        <option value="50">Eau de Parfum Royale (50 $)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantité</label>
+                    <input type="number" id="quantity" value="1" min="1" onchange="calculerTotal()">
+                </div>
+
+                <h3>2. Méthode de paiement (Transfert vers compte entreprise)</h3>
+                <div class="form-group">
+                    <label>Choisissez votre compte personnel</label>
+                    <select id="paymentMethod" onchange="afficherChampsPaiement()">
+                        <option value="mobile">Mobile Money (M-Pesa, Airtel Money, Orange Money)</option>
+                        <option value="carte">Carte Bancaire (Visa / Mastercard)</option>
+                    </select>
+                </div>
+
+                <!-- Champ Mobile Money -->
+                <div id="mobileFields" class="form-group">
+                    <label>Numéro de téléphone Mobile Money</label>
+                    <input type="tel" placeholder="+243 81 000 0000">
+                </div>
+
+                <!-- Champ Carte Bancaire -->
+                <div id="cardFields" class="form-group" style="display: none;">
+                    <label>Numéro de carte bancaire</label>
+                    <input type="text" placeholder="4532 •••• •••• ••••">
+                </div>
+
+                <div class="total-box">
+                    Total à transférer : <span id="totalAmount">25</span> $
+                </div>
+
+                <button type="submit" class="btn-pay">Confirmer et Payer</button>
+            </form>
+
+            <!-- Zone de notification de statut de paiement -->
+            <div id="paymentStatus" class="status-box" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Pour les commandes dans le fichier commande.html -->
+<form id="paymentForm" action="payer.php" method="POST">
+    <h3>1. Informations de livraison</h3>
+    <div class="form-group">
+        <label>Nom complet</label>
+        <input type="text" name="clientName" required placeholder="Ex: Jean Mukendi">
+    </div>
+    <div class="form-group">
+        <label>Email (obligatoire pour les reçus et paiements par carte)</label>
+        <input type="email" name="clientEmail" required placeholder="client@exemple.com">
+    </div>
+    <div class="form-group">
+        <label>Numéro de téléphone</label>
+        <input type="tel" name="clientPhone" required placeholder="+243810000000">
+    </div>
+    <div class="form-group">
+        <label>Adresse de livraison</label>
+        <input type="text" name="clientAddress" required placeholder="Commune, Quartier, Avenue, N°">
+    </div>
+    <div class="form-group">
+        <label>Produit choisi</label>
+        <select name="productPrice" id="productSelect" onchange="calculerTotal()">
+            <option value="25">Sérum Éclat Visage (25 $)</option>
+            <option value="45">Ensemble Urbain Chic (45 $)</option>
+            <option value="35">Montre Classique Cuir (35 $)</option>
+            <option value="50">Eau de Parfum Royale (50 $)</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Quantité</label>
+        <input type="number" name="quantity" id="quantity" value="1" min="1" onchange="calculerTotal()">
+    </div>
+    <div class="total-box">
+        Total à payer : <span id="totalAmount">25</span> $
+    </div>
+
+    <button type="submit" class="btn-pay">Payer maintenant (Mobile Money ou Carte)</button>
+</form>
+    <script src="script.js"></script>
+</body>
+</html>

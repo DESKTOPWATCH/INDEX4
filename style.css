@@ -1,0 +1,410 @@
+/* Défilement fluide sur la même page */
+html {
+    scroll-behavior: smooth;
+}
+
+.img-diapo{
+
+max-width: 100%;
+
+
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f9fb;
+    color: #333;
+}
+
+/* Barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.logo span {
+    color: #e91e63;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .active-link {
+    color: #e91e63 !important;
+}
+
+.btn-nav-primary {
+    background: #e91e63;
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+/* Diaporama */
+.slider-container {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    color: white;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: #e91e63;
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+/* Flèches diaporama */
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: #e91e63;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* Boutons points diaporama */
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    height: 14px;
+    width: 14px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #e91e63;
+    transform: scale(1.2);
+}
+
+/* Sections générales */
+.section-padding {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.section-padding h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.feature-box i {
+    font-size: 2.5rem;
+    color: #e91e63;
+    margin-bottom: 15px;
+}
+
+/* Page Produits : Carrés avec courbes sur les côtés */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background: white;
+    /* C'est ici que l'on crée les courbes prononcées sur les côtés du carré */
+    border-radius: 28px; 
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+    text-align: left;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.badge {
+    background: #fce4ec;
+    color: #e91e63;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.card-info h3 {
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 15px 0;
+}
+
+.btn-card {
+    display: block;
+    text-align: center;
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-card:hover {
+    background: #e91e63;
+}
+
+/* Page Commande & Paiement */
+.checkout-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.checkout-container h3 {
+    margin: 20px 0 15px;
+    color: #e91e63;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+.total-box {
+    background: #f1f2f6;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.btn-pay {
+    width: 100%;
+    padding: 15px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.status-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Pied de page */
+footer {
+    background: #2c3e50;
+    color: white;
+    padding-top: 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 8% 40px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    color: #e91e63;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.socials {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.socials a {
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    background: #e91e63;
+}
+
+.suggestion-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.suggestion-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    flex: 1;
+}
+
+.suggestion-form button {
+    padding: 10px 15px;
+    border: none;
+    background: #e91e63;
+    color: white;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background: #1a252f;
+    font-size: 0.9rem;
+}

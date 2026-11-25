@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinStyle & Beauté - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bibliothèque d'icônes (FontAwesome) pour les flèches et réseaux sociaux -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Barre de navigation avec liens d'ancrage (même page) et liens externes -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">KinStyle<span>&Beauté</span></div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apercu">Nouveautés</a></li>
+                <li><a href="#contact">Contact & Avis</a></li>
+                <!-- Liens vers les autres pages HTML -->
+                <li><a href="produits.html" class="btn-nav">Nos Produits</a></li>
+                <li><a href="commande.html" class="btn-nav-primary">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+	
+    <!-- Section 1 : Diaporama (Carousel) -->
+    <section id="accueil" class="slider-container">
+        <div class="slide active" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0oBpEfVO7hO4Hi9wbSSb003v0P083_2vdFT7bQN3gag&s=10)">
+            <!-- Ceci était dans la div qui est juste en haut. Elle donnait le gris sur le diaporama : style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://unsplash.com');" -->
+            <div class="slide-content">
+                <h1>Cosmétiques Naturels & Éclat</h1>
+    <p>Sublimez votre peau avec nos gammes exclusives adaptées à tous les teints.</p>
+                <a href="produits.html" class="btn">Découvrir la gamme</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcKGP3RHTBXD2iGVzoLyrZQP8RPdwYqFie81vv35yBdA&s=10);">
+            <div class="slide-content">
+                <h1>Mode & Habillement Tendance</h1>
+                <p>Des tenues élégantes et décontractées pour toutes vos occasions.</p>
+                <a href="produits.html" class="btn">Voir la collection</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSByWyrATxPp9hX3aUITcZrR5CcNoKHcN7hwo1ezfc3NQ&s=10)">
+            <div class="slide-content">
+                <h1>Accessoires & Produits Divers</h1>
+                <p>Montres, sacs, parfums et articles du quotidien à prix imbattables.</p>
+                <a href="commande.html" class="btn">Commander maintenant</a>
+            </div>
+        </div>
+
+        <!-- Flèches de sélection -->
+        <button class="prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- Boutons de sélection (Points) -->
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Section 2 : Aperçu (Lien interne #apercu) -->
+    <section id="apercu" class="section-padding">
+        <h2>Pourquoi nous choisir ?</h2>
+            <div class="features-grid">
+            <div class="feature-box">
+                <i class="fas fa-gem"></i>
+        <h3>Qualité Garantie</h3>
+                <p>Produits authentiques sélectionnés avec soin.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-truck"></i>
+                <h3>Livraison Rapide</h3>
+                <p>Expédition sécurisée directement chez vous.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Paiement Sécurisé</h3>
+                <p>Mobile Money, cartes bancaires et virements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page avec propositions et icônes de réseaux sociaux -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos de nous</h3>
+                <p>Votre boutique de référence pour la beauté, la mode et les accessoires du quotidien.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#accueil">Haut de page</a></li>
+                    <li><a href="produits.html">Catalogue des produits</a></li>
+                    <li><a href="commande.html">Passer une commande</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Vos Propositions</h3>
+                <p>Une idée de produit ou une suggestion ?</p>
+                <form onsubmit="envoyerProposition(event)" class="suggestion-form">
+                    <input type="text" placeholder="Votre suggestion..." required>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 KinStyle & Beauté | Tous droits réservés.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
